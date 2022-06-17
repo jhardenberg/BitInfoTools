@@ -4,6 +4,9 @@ using BitInformation
 using NetCDF
 using ArgParse
 
+include("uint_types.jl")
+include("randshave.jl")
+
 function parse_commandline()
     s = ArgParseSettings()
 
@@ -38,6 +41,9 @@ function parse_commandline()
         "--groom", "-g"
             help = "Remove false information using grooming for extra bits (instead of rounding)"
             action = :store_true
+        "--random", "-r"
+            help = "Remove false information setting extra bits to random (instead of rounding)"
+            action = :store_true
         "--trim", "-t"
             help = "Ignore the last TRIM bits when computing preserved information."
             arg_type = Int
@@ -57,6 +63,7 @@ nbits = args["bits"]
 fshave = args["shave"]
 fhshave = args["halfshave"]
 fgroom = args["groom"]
+frand = args["random"]
 perc = args["percentage"]/100
 idim = args["dim"]
 ntrim = args["trim"]
@@ -103,6 +110,8 @@ elseif fhshave
    halfshave!(a, nbits)
 elseif fgroom
    groom!(a, nbits)
+elseif frand 
+   randshave!(a, nbits)
 else
    round!(a, nbits)
 end
