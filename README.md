@@ -1,4 +1,4 @@
-# BitInfoTools.jl
+# BitInfoTools
 ## Command-line tool to implement BitInformation shaving of netcdf files
 
 This small repository hosts a simple CLI tool in Julia which allows to shave/round mantissa bits in a netcdf file to explore different compression options. Based on the package [BitInformation.jl](https://github.com/milankl/BitInformation.jl) and on the ideas in [Klöwer et al. 2021](https://www.nature.com/articles/s43588-021-00156-2).
