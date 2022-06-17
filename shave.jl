@@ -35,6 +35,9 @@ function parse_commandline()
         "--halfshave", "-f"
             help = "Remove false information halfshaving extra bits (instead of rounding)"
             action = :store_true
+        "--groom", "-g"
+            help = "Remove false information using grooming for extra bits (instead of rounding)"
+            action = :store_true
         "--trim", "-t"
             help = "Ignore the last TRIM bits when computing preserved information."
             arg_type = Int
@@ -53,6 +56,7 @@ var = args["var"]
 nbits = args["bits"]
 fshave = args["shave"]
 fhshave = args["halfshave"]
+fgroom = args["groom"]
 perc = args["percentage"]/100
 idim = args["dim"]
 ntrim = args["trim"]
@@ -97,6 +101,8 @@ if fshave
    shave!(a, nbits)
 elseif fhshave
    halfshave!(a, nbits)
+elseif fgroom
+   groom!(a, nbits)
 else
    round!(a, nbits)
 end
