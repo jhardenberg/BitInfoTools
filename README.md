@@ -49,6 +49,10 @@ Full man page:
                         (instead of rounding)
        -f, --halfshave       Remove false information halfshaving extra
                         bits (instead of rounding)
+       -g, --groom           Remove false information using grooming for
+                        extra bits (instead of rounding)
+       -r, --random          Remove false information setting extra bits to
+                        random (instead of rounding)
        -t, --trim TRIM       Ignore the last TRIM bits when computing
                         preserved information. (type: Int64, default:
                         3)
